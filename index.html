@@ -1,0 +1,231 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>BAM! ComiCon Events</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicons -->
+    <link href="img/lb-logo1.png" rel="icon">
+    <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!--CSS for every challenge-->
+    <link rel="stylesheet" href="/css/site.css">
+
+    <!--Fonts-->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital@1&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:ital@1&family=Dela+Gothic+One&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/themes/prism-twilight.min.css"
+        integrity="sha512-akb4nfKzpmhujLUyollw5waBPeohuVf0Z5+cL+4Ngc4Db+V8szzx6ZTujguFjpmD076W8LImVIbOblmQ+vZMKA=="
+        crossorigin="anonymous" />
+    <!--Favicon-->
+    <link rel='icon' href='/img/favicon.ico' type='image/x-icon' sizes="16x16" />
+
+</head>
+
+<body onload="buildDropDown()">
+    <header>
+        <!-- Fixed navbar -->
+        <nav class="navbar navbar-expand-md navbar-dark fixed-top" id="nav">
+            <a class="navbar-brand" href="#">BAM! ComicCon</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+                aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarCollapse">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="index.html">Challenges <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="Code.html">Code</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/leobdev/bam-events.git">Git</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://leocoding.net">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">My Blog</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <div class="jumbotron">
+    </div>
+    <!-- Begin page content -->
+    <div class="container-fluid embed-responsive p-lg-5">
+        <div class="row">
+            <div class="col-sm-6">
+                <div class="btn-group">
+                    <button type="button" class="btn btn-secondary">Pick a Location</button>
+                    <button type="button" class="btn btn-secondary dropdown-toggle dropdown-toggle-split"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span class="sr-only">
+                            Toggle Dropdown
+                        </span></button>
+                    <div id="eventDropDown" class="dropdown-menu">
+                        <!--Template for dropdown-->
+                    </div>
+                </div>
+                <table class="table table-striped">
+                    <tr>
+                        <th colspan="2" id="statsHeader">Stats for all events</th>
+                    </tr>
+                    <tr>
+                        <td>Total Attendance</td>
+                        <td id="total">100</td>
+                    </tr>
+                    <tr>
+                        <td>Average Attendance</td>
+                        <td id="average">100</td>
+                    </tr>
+                    <tr>
+                        <td>Most Attended</td>
+                        <td id="most">100</td>
+                    </tr>
+                    <tr>
+                        <td>Least Attended</td>
+                        <td id="least">100</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="col-sm-6 order-first order-md-2">
+                <img src="img/13-133623_sound-clipart.png" height="500px" class=" img-responsive">
+            </div>
+        </div>
+    </div>
+
+    <div class="container pt-lg-5">
+        <div class="row offset-2">
+            <h2 class="text-center" id="bam-font">A ComicCon Event Company</h2>
+        </div>
+    </div>
+    <main role="main" class="container">
+        <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#addAddress">
+            Add Contact
+        </button>
+        <hr>
+        <table class="table table-striped" id="addressBook">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Event Name</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Attendance</th>
+                    <th>Event Date</th>
+                </tr>
+            </thead>
+            <tbody id="resultsBody">
+                <!--Data goes here-->
+            </tbody>
+        </table>
+        <div class="modal" id="addAddress">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">Add Data</h4>
+                        <button type="button" class="close" data-dismis="modal">&times;</button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="newAddressForm">
+                            <div class="form-group">
+                                <label for="newEventName">Event name</label>
+                                <input type="text" class="form-control" id="newEventName"
+                                    placeholder="enter event name">
+                            </div>
+                            <div class="form-group">
+                                <label for="newCity">City</label>
+                                <input type="text" class="form-control" id="newCity" placeholder="enter city">
+                            </div>
+                            <div class="form-group">
+                                <label for="newState">State</label>
+                                <input type="text" class="form-control" id="newState" placeholder="enter state">
+                            </div>
+                            <div class="form-group">
+                                <label for="newAttendance">Attendance</label>
+                                <input type="text" class="form-control" id="newAttendance"
+                                    placeholder="enter attendance">
+                            </div>
+                            <div class="form-group">
+                                <label for="newDate">Event Date</label>
+                                <input type="date" class="form-control" id="newDate" placeholder="enter date">
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" onclick="saveEvent()" class="btn btn-secondary"
+                            data-dismiss="modal">Save</button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+    <footer>
+        <p class="text-center pb-2">Developed by Leo J. Barnuevo | Coder Foundry</p>
+    </footer>
+
+    <template id="resultsData-template">
+        <tr>
+            <td id="event"></td>
+            <td id="city"></td>
+            <td id="state"></td>
+            <td id="attendance"></td>
+            <td id="date"></td>
+        </tr>
+    </template>
+
+    <!-- Bootstrap core JavaScript
+        ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script>
+        window.jQuery || document.write(
+            '<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+    </script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/prism.min.js"
+        integrity="sha512-WkVkkoB31AoI9DAk6SEEEyacH9etQXKUov4JRRuM1Y681VsTq7jYgrRw06cbP6Io7kPsKx+tLFpH/HXZSZ2YEQ=="
+        crossorigin="anonymous">
+    </script>
+    <script src="js/site.js"></script>
+
+    <!--Button Events-->
+
+</body>
+
+</html>

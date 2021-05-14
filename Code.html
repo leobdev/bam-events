@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>FizzBuzz</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+  <!--CSS for every challenge-->
+  <link rel="stylesheet" href="/css/site.css">
+
+  <!--Fonts-->
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Merienda&display=swap" rel="stylesheet">
+
+  <!--Prism CSS-->
+  <link href="css/prismTomorrow.css" rel="stylesheet" />
+
+
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/themes/prism-twilight.min.css"
+    integrity="sha512-akb4nfKzpmhujLUyollw5waBPeohuVf0Z5+cL+4Ngc4Db+V8szzx6ZTujguFjpmD076W8LImVIbOblmQ+vZMKA=="
+    crossorigin="anonymous" />
+</head>
+
+<body>
+  <header>
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top">
+      <a class="navbar-brand" href="#">FizzBuzz challenge</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item ">
+            <a class="nav-link" href="index.html">Challenges</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="Code.html">Code<span class="sr-only">(current)</span></a> </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Git</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Portfolio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">My Blog</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <!-- Begin page content -->
+
+  <body>
+    <div class="container col-3 container-fluid pt-lg-5">
+      <div class="row">
+        <div class="col-6">
+          <img src="img/fizzbuzz-logo.png" height="500px" class="image" alt="">
+
+        </div>
+      </div>
+    </div>
+    <div class="container col-6 shadow p-3 mb-5 bg-white rounded mt-1">
+      <div class="row">
+        <div class="col">
+          <h2 id="fizzbuzz-title" class="text-center">FizzBuzz</h2>
+          <h2 id="fizzbuzz-title" class="text-center">Challenge</h2>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <p>Fizz buzz is a group word game for children to teach them about division.
+
+            Players take turns to count incrementally, replacing any number divisible by three with the word
+            "Fizz!", and any number divisible by five with the word "Buzz!", and any number is both
+            divisible by five and three with the word "FizzBuzz!!".
+            <br>
+            <br>
+            Technologies Used: HTML, JavaScript, CSS, Bootstrap.
+            <br>
+            <br>
+            Example: the user enters "210" the output is "FizzFizz!!". Because 200 can divide to 5 and 3.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+
+          <div class="row">
+            <div class="col col-lg-11 col-md-4 container-fluid">
+              <pre class="language-javascript">
+          <code>
+//take user input and print numbers to the page
+function printNumbers() {
+let startNum = parseInt(document.getElementById("numOne").value);
+let endNum = parseInt(document.getElementById("numTwo").value);
+let numbers = getRange(startNum, endNum);
+displayData(numbers);
+}
+
+//gets the range of numbers
+function getRange(startNum, endNum) {
+let numberArray = [];
+
+for (let index = startNum; index <= endNum; index++) { 
+    numberArray.push(index); 
+  } 
+  return numberArray; 
+}
+
+//displays the numbers of the page
+
+function displayData(numbers) {
+const rowTemplate = document.getElementById("Data-Template");
+const resultsBody = document.getElementById("resultsBody");
+let colCount = rowTemplate.content.cloneNode(true).querySelectorAll("td").length;
+//ImportNode
+//clear the table
+resultsBody.innerHTML = "";
+
+    //loop over every element in the numbers array
+    //get the value and write it to the page
+    for (let i = 0; i < numbers.length; i +=colCount) { 
+      let dataRow=rowTemplate.content.cloneNode(true); 
+      //return anarray of columns from the template 
+      
+      let cols=dataRow.querySelectorAll("td");
+      //loop over the columns 
+      
+      for (letcolIndex=0; colIndex < cols.length; colIndex++) { 
+        let value=numbers[i + colIndex]; 
+        if (value % 3==0 && value % 5==0) { 
+          cols[colIndex].classList.add("fizzbuzz") cols[colIndex].textContent="FizzBuzz" ; 
+        } else if (value % 3==0){ cols[colIndex].classList.add("fizz") cols[colIndex].textContent="Fizz" ; 
+      } else if (value % 5==0) {
+          cols[colIndex].classList.add("buzz") 
+          cols[colIndex].textContent="Buzz" ; 
+        } else {
+          cols[colIndex].classList.add("value") cols[colIndex].textContent=value; } 
+          //Note: td's use textContent to set content
+           //add the row to the page 
+           
+           resultsBody.appendChild(dataRow); 
+          } 
+        } 
+      }
+
+
+
+            
+          </code>
+        </pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <p class="text-center pb-2">Developed by Leo J. Barnuevo | Coder Foundry</p>
+    </footer>
+
+    <!-- Bootstrap core JavaScript
+        ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script>
+      window.jQuery || document.write(
+        '<script src="../../assets/js/vendor/jquery-slim.min.js"><\/script>')
+    </script>
+    <script src="../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../dist/js/bootstrap.min.js"></script>
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.21.0/prism.min.js"
+      integrity="sha512-WkVkkoB31AoI9DAk6SEEEyacH9etQXKUov4JRRuM1Y681VsTq7jYgrRw06cbP6Io7kPsKx+tLFpH/HXZSZ2YEQ=="
+      crossorigin="anonymous">
+    </script>
+    <script src="js/site.js"></script>
+
+    <!--Prism JS-->
+    <script src="js/prismTomorrow.js"></script>
+
+
+    <!--Button Events-->
+    <script>
+      document.getElementById("submitBtn").addEventListener("click", printNumbers);
+    </script>
+  </body>
+
+</html>
